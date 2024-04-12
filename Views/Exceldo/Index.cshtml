@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ImpactTraining.Models.Exceldo_Model.Customer>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-3">
+            <table class="table table-bordered table-responsive">
+                <thead class="bg-dark text-light text-center">
+                    <tr>
+                        <th>CustomerId</th>
+                        <th>AccountNo</th>
+                        <th>IfscCode</th>
+                        <th>Account Holder Name</th>
+                        <th>Check No</th>
+                        <th>MICR_Code</th>
+                        <th>IsProcessed</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                   @*  Jab v C# ka code likhna ho to @ use karnege *@
+                   @foreach(var d in Model)
+                    {
+                        <tr>
+                            <td>@d.Customer_Id</td>
+                            <td>@d.Account_No</td>
+                            <td>@d.Ifsc_Code</td>
+                            <td>@d.Account_Holder_Name</td>
+                            <td>@d.Check_No</td>
+                            <td>@d.MICR_Code</td>
+                            <td>@d.Is_Processed</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

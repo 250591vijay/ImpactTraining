@@ -1,0 +1,60 @@
+﻿@model List<ImpactTraining.Models.Exceldo_Model.Customer>
+@{
+    ViewData["Title"] = "DisplayFileData";
+}
+@* is wale display m data excel file s aa raha hai *@
+
+<h1>DisplayFileData</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-10 offset-1">
+            @* Data ko send karne k liye table ko form k andar rakha gaya hai *@
+            <form method="post" asp-action="SaveFileData"asp-controller="Exceldo">
+                <button type="submit"class="btn btn-sm btn-outline-info float-end">Save</button>
+                <table class="table table-bordered table-responsive">
+                    <thead class="bg-dark text-light text-center">
+                        <tr>
+                            <th>Select All<br /> <input type="checkbox" id="selectAll" /></th>
+                            <th>CustomerId</th>
+                            <th>AccountNo</th>
+                            <th>IfscCode</th>
+                            <th>Account Holder Name</th>
+                            <th>Check No</th>
+                            <th>MICR_Code</th>
+                            <th>IsProcessed</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @*  Jab v C# ka code likhna ho to @ use karnege *@
+                        @for (int i = 0; i < Model.Count(); i++)
+                        {
+                            <tr>
+                                @* IEnumerable use nahi kar saket kuy ki model ko list m la rhe hai *@
+                                @*   Data ko display karne k liye
+                            <td>@Model[i].Customer_Id</td>*@
+                                @* jite row hogi utne check box ki zaroot hogi is k liye
+                            <td><input type="checkbox" asp-for="@Model[i].Active" class="selectOne"/></td>
+                            <td>@Model[i].Customer_Id</td>  *@
+
+                                <td><input type="checkbox" asp-for="@Model[i].Active" class="selectOne" /></td>
+
+                                @* data send karne k liye hume input tag use karna hoga
+                                <td>@Model[i].Customer_Id<input type="hidden" asp-for="@Model[i].Customer_Id" /></td> *@
+
+                                <td>@Model[i].Customer_Id<input type="hidden" asp-for="@Model[i].Customer_Id" /></td>
+                                <td>@Model[i].Account_No<input type="hidden" asp-for="@Model[i].Account_No" /></td>
+                                <td>@Model[i].Ifsc_Code<input type="hidden" asp-for="@Model[i].Ifsc_Code" /></td>
+                                <td>@Model[i].Account_Holder_Name<input type="hidden" asp-for="@Model[i].Account_Holder_Name" /></td>
+                                <td>@Model[i].Check_No<input type="hidden" asp-for="@Model[i].Check_No" /></td>
+                                <td>@Model[i].MICR_Code<input type="hidden" asp-for="@Model[i].MICR_Code" /></td>
+                                <td>@Model[i].Is_Processed<input type="hidden" asp-for="@Model[i].Is_Processed" /></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+
